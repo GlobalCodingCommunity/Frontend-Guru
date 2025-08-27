@@ -1,13 +1,20 @@
-import React, { useState } from "react";
-import Screen from "../components/Screen";
-import Title from "../components/Title";
-import Subtitle from "../components/Subtitle";
-import TextInput from "../components/TextInput";
-import Button from "../components/Button";
-import { inRange } from "../utils/validators";
+import React, { useEffect, useState } from 'react';
+import Screen from '../components/Screen';
+import Title from '../components/Title';
+import Subtitle from '../components/Subtitle';
+import TextInput from '../components/TextInput';
+import Button from '../components/Button';
+import { inRange } from '../utils/validators';
 
 // TODO Q4
 const TwoFactorAuthScreen = () => {
+  const [isValid, setIsValid] = useState(false);
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    setIsValid(text.trim().length && inRange(text, 7, 7));
+  }, [text]);
+
   return (
     <Screen>
       <form>
@@ -21,11 +28,13 @@ const TwoFactorAuthScreen = () => {
           role="textbox"
           name="textbox"
           placeholder="Enter the 7-digit code"
+          onChange={(e) => setText(e.target.value)}
         />
         <Button
           type="primary"
           name="Submit"
           value="Submit"
+          disabled={!isValid}
         />
       </form>
     </Screen>
