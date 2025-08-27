@@ -9,6 +9,7 @@ node_modules
 
 # misc
 .DS_Store
+.eslintcache
 
 # local env files
 .env.local
