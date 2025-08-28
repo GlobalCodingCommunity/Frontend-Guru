@@ -1,69 +1,58 @@
-# React + TypeScript + Vite
+# GreatFrontEnd Practice Problems
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains my solutions to GreatFrontEnd practice problems, organized by category. Each problem includes both the original starter code and my implemented solution, with a problem description.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Install dependencies: `npm install`
+2. Run development server: `npm run dev`
+3. Open browser to view all problems in an interactive format
 
-## Expanding the ESLint configuration
+## Problems Solved
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### UI Components
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+#### Accordion
+**Path**: `src/problems/UI/Accordian/`
+- **Description**: Build an Accordion component with collapsible sections
+- **Requirements**: 
+  - All sections collapsed by default
+  - Toggle functionality on title click
+  - Independent section behavior
+- **Asked at**: Amazon
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### JavaScript/React Hooks
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### useBoolean Hook
+**Path**: `src/problems/JS/useBoolean/`
+- **Description**: Custom React hook for managing boolean state with utility methods
+- **Features**:
+  - `value` - current boolean state
+  - `setTrue()` - set state to true
+  - `setFalse()` - set state to false
+  - `toggle()` - toggle state
+- **Default**: Initial value defaults to `false`
+
+## Project Structure
+
+Each problem follows this structure:
+```
+src/problems/[Category]/[ProblemName]/
+├── problem.md      # Problem description and requirements
+├── Original.tsx    # Starting point/template code
+└── Solution.tsx    # My implemented solution
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React 19.1.1
+- TypeScript
+- Vite 7.1.3
+- ESLint for code quality
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Features
+
+- **Dynamic Problem Loading**: Automatically discovers and loads all problems
+- **Side-by-Side Comparison**: View original vs solution implementations
+- **Interactive Problem Browser**: Expandable sections for each problem
+- **Clean Design**: Simple white background with black text
