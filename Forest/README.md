@@ -21,6 +21,17 @@ This repository contains my solutions to GreatFrontEnd practice problems, organi
   - Independent section behavior
 - **Asked at**: Amazon
 
+#### Contact Form
+**Path**: `src/problems/UI/Contact Form/`
+- **Description**: Build a basic "Contact Us" form for marketing websites
+- **Requirements**:
+  - Name field (text input)
+  - Email field (email input)
+  - Message field (textarea)
+  - Submit button with "Send" text
+  - Pure HTML implementation (no JavaScript)
+- **API**: POST to `https://questions.greatfrontend.com/api/questions/contact-form`
+
 ### JavaScript/React Hooks
 
 #### useBoolean Hook
