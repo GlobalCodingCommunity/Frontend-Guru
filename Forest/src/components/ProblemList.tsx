@@ -13,35 +13,45 @@ export default function ProblemList() {
 
   useEffect(() => {
     const loadProblems = async () => {
-      const problemModules = import.meta.glob('/src/problems/*/problem.md', { as: 'raw' });
-      const originalModules = import.meta.glob('/src/problems/*/Original.tsx');
-      const solutionModules = import.meta.glob('/src/problems/*/Solution.tsx');
+      const problemModules = import.meta.glob('/src/problems/*/*/problem.md', { as: 'raw' });
+      const originalTsxModules = import.meta.glob('/src/problems/*/*/Original.tsx');
+      const originalTsModules = import.meta.glob('/src/problems/*/*/Original.ts');
+      const solutionTsxModules = import.meta.glob('/src/problems/*/*/Solution.tsx');
+      const solutionTsModules = import.meta.glob('/src/problems/*/*/Solution.ts');
       
       const loadedProblems: Problem[] = [];
       
       for (const path of Object.keys(problemModules)) {
-        const problemName = path.split('/')[3]; // Extract folder name
+        const pathParts = path.split('/');
+        const category = pathParts[3]; // Category folder (UI, JS, etc.)
+        const problemName = pathParts[4]; // Problem name folder
+        const displayName = `${category}/${problemName}`;
         
         try {
           const description = await problemModules[path]();
-          const originalPath = `/src/problems/${problemName}/Original.tsx`;
-          const solutionPath = `/src/problems/${problemName}/Solution.tsx`;
+          const originalTsxPath = `/src/problems/${category}/${problemName}/Original.tsx`;
+          const originalTsPath = `/src/problems/${category}/${problemName}/Original.ts`;
+          const solutionTsxPath = `/src/problems/${category}/${problemName}/Solution.tsx`;
+          const solutionTsPath = `/src/problems/${category}/${problemName}/Solution.ts`;
           
-          if (originalModules[originalPath] && solutionModules[solutionPath]) {
-            const [originalModule, solutionModule] = await Promise.all([
-              originalModules[originalPath](),
-              solutionModules[solutionPath]()
+          const originalModule = originalTsxModules[originalTsxPath] || originalTsModules[originalTsPath];
+          const solutionModule = solutionTsxModules[solutionTsxPath] || solutionTsModules[solutionTsPath];
+          
+          if (originalModule && solutionModule) {
+            const [originalModuleResult, solutionModuleResult] = await Promise.all([
+              originalModule(),
+              solutionModule()
             ]);
             
             loadedProblems.push({
-              name: problemName,
+              name: displayName,
               description: description as string,
-              OriginalComponent: (originalModule as any).default,
-              SolutionComponent: (solutionModule as any).default,
+              OriginalComponent: (originalModuleResult as { default: React.ComponentType }).default,
+              SolutionComponent: (solutionModuleResult as { default: React.ComponentType }).default,
             });
           }
         } catch (error) {
-          console.warn(`Failed to load problem ${problemName}:`, error);
+          console.warn(`Failed to load problem ${displayName}:`, error);
         }
       }
       
