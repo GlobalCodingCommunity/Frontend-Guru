@@ -10,48 +10,66 @@ This repository contains my solutions to GreatFrontEnd practice problems, organi
 
 ## Problems Solved
 
-### UI Components
+### 🎨 UI Components
 
-#### Accordion
-**Path**: `src/problems/UI/Accordian/`
-- **Description**: Build an Accordion component with collapsible sections
-- **Requirements**: 
-  - All sections collapsed by default
-  - Toggle functionality on title click
-  - Independent section behavior
-- **Asked at**: Amazon
+---
 
-#### Contact Form
-**Path**: `src/problems/UI/Contact Form/`
-- **Description**: Build a basic "Contact Us" form for marketing websites
-- **Requirements**:
-  - Name field (text input)
-  - Email field (email input)
-  - Message field (textarea)
-  - Submit button with "Send" text
-  - Pure HTML implementation (no JavaScript)
-- **API**: POST to `https://questions.greatfrontend.com/api/questions/contact-form`
+#### 🪗 Accordion
+> **Path**: `src/problems/UI/Accordian/`  
+> **Asked at**: Amazon
 
-#### Todo List
-**Path**: `src/problems/UI/TodoList/`
-- **Description**: Build a Todo List app with add and remove functionality
-- **Requirements**:
-  - Add new tasks on clicking the "Submit" button
-  - Clear input field upon successful addition
-  - Remove tasks from the list upon clicking the "Delete" button
-- **Focus**: Functionality over styling, UX improvements encouraged
+**Description**: Build an Accordion component with collapsible sections
 
-### JavaScript/React Hooks
+**Requirements**: 
+- All sections collapsed by default
+- Toggle functionality on title click
+- Independent section behavior
 
-#### useBoolean Hook
-**Path**: `src/problems/JS/useBoolean/`
-- **Description**: Custom React hook for managing boolean state with utility methods
-- **Features**:
-  - `value` - current boolean state
-  - `setTrue()` - set state to true
-  - `setFalse()` - set state to false
-  - `toggle()` - toggle state
-- **Default**: Initial value defaults to `false`
+---
+
+#### 📧 Contact Form
+> **Path**: `src/problems/UI/Contact Form/`  
+> **API**: POST to `https://questions.greatfrontend.com/api/questions/contact-form`
+
+**Description**: Build a basic "Contact Us" form for marketing websites
+
+**Requirements**:
+- Name field (text input)
+- Email field (email input)
+- Message field (textarea)
+- Submit button with "Send" text
+- Pure HTML implementation (no JavaScript)
+
+---
+
+#### ✅ Todo List
+> **Path**: `src/problems/UI/TodoList/`  
+> **Focus**: Functionality over styling, UX improvements encouraged
+
+**Description**: Build a Todo List app with add and remove functionality
+
+**Requirements**:
+- Add new tasks on clicking the "Submit" button
+- Clear input field upon successful addition
+- Remove tasks from the list upon clicking the "Delete" button
+
+---
+
+### ⚛️ JavaScript/React Hooks
+
+---
+
+#### 🔄 useBoolean Hook
+> **Path**: `src/problems/JS/useBoolean/`  
+> **Default**: Initial value defaults to `false`
+
+**Description**: Custom React hook for managing boolean state with utility methods
+
+**Features**:
+- `value` - current boolean state
+- `setTrue()` - set state to true
+- `setFalse()` - set state to false
+- `toggle()` - toggle state
 
 ## Project Structure
 
