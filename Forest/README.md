@@ -32,6 +32,15 @@ This repository contains my solutions to GreatFrontEnd practice problems, organi
   - Pure HTML implementation (no JavaScript)
 - **API**: POST to `https://questions.greatfrontend.com/api/questions/contact-form`
 
+#### Todo List
+**Path**: `src/problems/UI/TodoList/`
+- **Description**: Build a Todo List app with add and remove functionality
+- **Requirements**:
+  - Add new tasks on clicking the "Submit" button
+  - Clear input field upon successful addition
+  - Remove tasks from the list upon clicking the "Delete" button
+- **Focus**: Functionality over styling, UX improvements encouraged
+
 ### JavaScript/React Hooks
 
 #### useBoolean Hook

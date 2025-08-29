@@ -1,13 +1,27 @@
-import submitForm from "./submitForm";
-
 export default function App() {
   return (
-    <form
-      // Ignore the onSubmit prop, it's used by GFE to
-      // intercept the form submit event to check your solution.
-      onSubmit={submitForm}
-    >
-      <input type="text" />
-    </form>
+    <div>
+      <h1>Todo List</h1>
+      <div>
+        <input type="text" placeholder="Add your task" />
+        <div>
+          <button>Submit</button>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <span>Walk the dog</span>
+          <button>Delete</button>
+        </li>
+        <li>
+          <span>Water the plants</span>
+          <button>Delete</button>
+        </li>
+        <li>
+          <span>Wash the dishes</span>
+          <button>Delete</button>
+        </li>
+      </ul>
+    </div>
   );
 }

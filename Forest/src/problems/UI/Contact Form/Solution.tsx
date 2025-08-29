@@ -1,4 +1,4 @@
-import submitForm from "./submitForm.js";
+import submitForm from "./submitForm";
 
 export default function App() {
   return (
