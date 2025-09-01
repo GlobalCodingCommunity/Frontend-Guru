@@ -1,0 +1,26 @@
+body {
+  font-family: sans-serif;
+  color: white;
+  font-weight: bold;
+}
+
+.progress {
+  background-color: rgb(233, 236, 239);
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+  height: 20px;
+}
+
+.progress-bar {
+  background-color: #0d63fd;
+  height: 20px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.progress-value {
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
