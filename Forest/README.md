@@ -55,6 +55,27 @@ This repository contains my solutions to GreatFrontEnd practice problems, organi
 
 ---
 
+### 📝 HTML/JavaScript
+
+---
+
+#### 📝 Signup Form
+> **Path**: `src/problems/html_js/SingupForm/`  
+> **API**: POST to `https://questions.greatfrontend.com/api/questions/sign-up`
+
+**Description**: Build a signup form with client-side validation and API integration
+
+**Requirements**:
+- Username field (alphanumeric, min 4 characters)
+- Email field (email validation, min 6 characters)
+- Password field (min 6 characters)
+- Confirm Password field with matching validation
+- Form submission with API integration
+- Error message display for password mismatch
+- Pure HTML/JavaScript implementation
+
+---
+
 ### ⚛️ JavaScript/React Hooks
 
 ---
