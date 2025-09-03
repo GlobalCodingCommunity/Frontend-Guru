@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+}
+
+.bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.outer-progress {
+  background-color: lightgray;
+}
+
+.inner-progress {
+  background-color: green;
+  transition: all 2000ms ease-in-out;
+  height: 10px;
+}
