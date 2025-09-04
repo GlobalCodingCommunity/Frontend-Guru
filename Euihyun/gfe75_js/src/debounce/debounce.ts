@@ -63,10 +63,10 @@ class Debounce {
     if (this.timeoutId >= 0) clearTimeout(this.timeoutId);
   }
 
-  flush() {
+  flush(...args: any[]) {
     if (this.timeoutId >= 0) {
       clearTimeout(this.timeoutId);
-      this.funcToDebounce();
+      this.funcToDebounce.call(this, ...args);
     }
   }
 }
@@ -82,7 +82,7 @@ debouncedIncrement2();
 
 blockThread(500);
 console.log(i); //0
-// debounceObject.flush();
-// console.log(i); //1
-debounceObject.cancel();
-console.log(i); //0
+debounceObject.flush();
+console.log(i); //1
+// debounceObject.cancel();
+// console.log(i); //0
