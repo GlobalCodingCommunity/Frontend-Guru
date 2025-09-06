@@ -1,3 +1,3 @@
-export default function functionLength() {
-  return function.length;
+export default function functionLength(fn) {
+  return fn.length;
 }
