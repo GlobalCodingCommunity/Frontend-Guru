@@ -20,7 +20,8 @@ export default function StarRating({
   return (
     <div>
       {Array.from({ length: maxStars }, (_, i) => {
-        const filled = i < rating || i < hoveredIndex;
+        const filled =
+          hoveredIndex !== null ? i < hoveredIndex : i < currentRating;
 
         return (
           <svg
