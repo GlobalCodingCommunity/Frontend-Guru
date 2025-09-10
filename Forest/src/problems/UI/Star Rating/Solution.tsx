@@ -1,27 +1,20 @@
 import { useState } from "react";
-import "./styles.css";
 
-export default function StarRating({
-  currentRating,
-  maxStars,
-}: {
-  currentRating: number;
-  maxStars: number;
-}) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | undefined>(
-    undefined
-  );
-  const [rating, setRating] = useState(currentRating);
+interface StarRatingProps {
+  max: number;
+  current?: number;
+}
 
-  const handleStarHover = (index) => {
-    setHoveredIndex(index);
-  };
+export default function StarRating({ max, current }: StarRatingProps) {
+  const [currentStars, setCurrentStars] = useState(current ?? 0);
+  const [hoveredStars, setHoveredStars] = useState<number | null>(null);
+  // hover >> current
 
   return (
     <div>
-      {Array.from({ length: maxStars }, (_, i) => {
+      {Array.from({ length: max }, (_, i) => {
         const filled =
-          hoveredIndex !== null ? i < hoveredIndex : i < currentRating;
+          hoveredStars !== null ? i < hoveredStars : i < currentStars;
 
         return (
           <svg
@@ -31,9 +24,9 @@ export default function StarRating({
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth="2"
-            onMouseEnter={() => handleStarHover(i + 1)}
-            onMouseLeave={() => handleStarHover(0)}
-            onClick={() => setRating(i + 1)}
+            onClick={() => setCurrentStars(i + 1)}
+            onMouseEnter={() => setHoveredStars(i + 1)}
+            onMouseLeave={() => setHoveredStars(null)}
           >
             <path
               strokeLinecap="round"
