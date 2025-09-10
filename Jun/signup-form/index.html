@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="user-name">Username</label>
+        <input name="user-name" id="user-name" type="text" minlength="4" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input name="email" id="email" type="email" />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input name="password" id="password" type="password" minlength="6" />
+      </div>
+      <div>
+        <label for="confirm-password">Confirm Password</label>
+        <input
+          name="confirm-password"
+          id="confirm-password"
+          type="password"
+          minlength="6"
+        />
+      </div>
+      <button id="sign-up">Sign Up</button>
+    </form>
+    <script src="src/index.js"></script>
+  </body>
+</html>
