@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 
 export default function App() {
   const inputRef = useRef(null);
-  const [numOfDie, setNumOfDie] = useState(12);
+  const [numOfDie, setNumOfDie] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
