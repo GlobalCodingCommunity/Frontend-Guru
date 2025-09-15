@@ -1,0 +1,66 @@
+body {
+  font-family: sans-serif;
+}
+
+.carousel {
+  position: relative;
+}
+
+.navigation {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  background: rgb(0, 0, 0, 0.5);
+  width: 100px;
+  padding: 5px;
+  margin-left: -50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navigation button {
+  all: unset;
+  cursor: pointer;
+  display: inline;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #777;
+}
+
+.navigation button.current{
+  background-color: white;
+  cursor: not-allowed;
+}
+
+.left,
+.right {
+  all: unset;
+  cursor: pointer;
+  background: rgb(0, 0, 0, 0.5);
+  position: absolute;
+  color: white;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left {
+  top: 50%;
+  left: 20px;
+}
+
+.right {
+  top: 50%;
+  right: 20px;
+}
+
+img-wrapper {
+  min-width: 600px;
+  min-height: 400px;
+  background-color: black;
+}
