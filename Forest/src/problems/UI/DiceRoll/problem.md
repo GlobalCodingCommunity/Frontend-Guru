@@ -1,5 +1,7 @@
 # Dice Roll App
 
+https://www.greatfrontend.com/questions/user-interface/dice-roller?practice=practice&tab=coding
+
 Build a dice roller app that simulates the results of rolling a specified number of 6-sided dice.
 
 ## Requirements
@@ -13,7 +15,7 @@ Build a dice roller app that simulates the results of rolling a specified number
 
 ![Dice roller example](https://www.greatfrontend.com/img/questions/dice-roller/dice-roller-example.png)
 
-*Example showing the result of rolling 6 dice arranged in rows of three*
+_Example showing the result of rolling 6 dice arranged in rows of three_
 
 ## Source
 
