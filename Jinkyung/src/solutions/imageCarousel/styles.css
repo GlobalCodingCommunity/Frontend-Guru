@@ -1,0 +1,69 @@
+body {
+    font-family: sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+}
+
+.img-wrapper {
+    position: relative;
+    /* 버튼을 이미지 위에 배치하기 위해 */
+    width: 600px;
+    height: 400px;
+}
+
+.leftBtn,
+.rightBtn {
+    position: absolute;
+    top: 50%;
+    /* transform: translateY(-50%); */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.leftBtn {
+    left: 10px;
+}
+
+.rightBtn {
+    right: 10px;
+}
+
+.pagination {
+    background-color: #0008;
+    border-radius: 12px;
+    display: inline-flex;
+    gap: 8px;
+    padding: 8px;
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pagination__button {
+    --size: 8px;
+    height: var(--size);
+    width: var(--size);
+    border: none;
+    border-radius: 100%;
+    background-color: #666;
+    cursor: pointer;
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.pagination__button :hover {
+    background-color: #a7a7a7;
+}
