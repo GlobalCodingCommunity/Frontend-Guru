@@ -30,7 +30,7 @@ function isBalancedBrackets(str) {
     }
   }
 
-  return bracketsStack.length === 0 ? true : false;
+  return bracketsStack.length === 0;
 }
 
 console.log(isBalancedBrackets("[]")); //true
