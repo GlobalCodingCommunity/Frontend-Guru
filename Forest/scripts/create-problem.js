@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
-import { createInterface } from 'readline';
+import inquirer from 'inquirer';
+import figlet from 'figlet';
+import boxen from 'boxen';
+import ora from 'ora';
 import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
@@ -8,15 +11,6 @@ import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-const rl = createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-function question(query) {
-  return new Promise(resolve => rl.question(query, resolve));
-}
 
 // Templates
 const templates = {
@@ -146,27 +140,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function createProblem() {
   try {
-    console.log('🚀 Problem Scaffolding Tool\n');
+    // Display beautiful header
+    console.log(
+      figlet.textSync('Problem Scaffolder', {
+        font: 'Standard',
+        horizontalLayout: 'default',
+        verticalLayout: 'default'
+      })
+    );
 
-    // Get problem type
-    const typeAnswer = await question('Select problem type (ui/js/htmljs): ');
-    const type = typeAnswer.toLowerCase().trim();
+    console.log('\n✨ Welcome to the Problem Creation Wizard! ✨\n');
 
-    if (!['ui', 'js', 'htmljs'].includes(type)) {
-      console.log('❌ Invalid type. Please choose: ui, js, or htmljs');
-      rl.close();
+    // Get answers using inquirer
+    const answers = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'type',
+        message: '🎯 Select problem type:',
+        choices: [
+          {
+            name: '🎨 UI Problem (React Components)',
+            value: 'ui',
+            short: 'UI'
+          },
+          {
+            name: '⚡ JavaScript Problem (Functions/Hooks)',
+            value: 'js',
+            short: 'JS'
+          },
+          {
+            name: '🌐 HTML/JS Problem (Vanilla Web)',
+            value: 'htmljs',
+            short: 'HTML/JS'
+          }
+        ]
+      },
+      {
+        type: 'input',
+        name: 'problemName',
+        message: '📝 Enter problem name:',
+        validate: (input) => {
+          const trimmed = input.trim();
+          if (!trimmed) {
+            return '❌ Problem name cannot be empty';
+          }
+          if (trimmed.length < 3) {
+            return '❌ Problem name must be at least 3 characters';
+          }
+          return true;
+        },
+        filter: (input) => input.trim()
+      },
+      {
+        type: 'confirm',
+        name: 'confirm',
+        message: (answers) => `📁 Create "${answers.problemName}" in ${answers.type.toUpperCase()} folder?`,
+        default: true
+      }
+    ]);
+
+    if (!answers.confirm) {
+      console.log('\n🚫 Operation cancelled by user.\n');
       return;
     }
 
-    // Get problem name
-    const nameAnswer = await question('Enter problem name: ');
-    const problemName = nameAnswer.trim();
-
-    if (!problemName) {
-      console.log('❌ Problem name cannot be empty');
-      rl.close();
-      return;
-    }
+    const { type, problemName } = answers;
 
     // Clean problem name for folder
     const folderName = problemName.replace(/[^a-zA-Z0-9\\s]/g, '').replace(/\\s+/g, ' ');
@@ -183,17 +221,25 @@ async function createProblem() {
       problemPath = join(basePath, 'html_js', folderName);
     }
 
-    console.log(`\n📁 Creating folder: ${problemPath}`);
+    // Show progress with spinner
+    const spinner = ora({
+      text: 'Creating problem directory...',
+      spinner: 'dots'
+    }).start();
 
     // Create directory
     await mkdir(problemPath, { recursive: true });
+    spinner.text = 'Generating template files...';
 
     // Get appropriate template
     const templateKey = type === 'htmljs' ? 'htmljs' : type;
     const templateFiles = templates[templateKey];
 
     // Create files
-    for (const [filename, content] of Object.entries(templateFiles)) {
+    const fileNames = Object.keys(templateFiles);
+    for (let i = 0; i < fileNames.length; i++) {
+      const filename = fileNames[i];
+      const content = templateFiles[filename];
       const filePath = join(problemPath, filename);
 
       // Create subdirectory if needed (for src folder in htmljs)
@@ -206,16 +252,45 @@ async function createProblem() {
       const finalContent = content.replace(/Problem Name/g, problemName);
 
       await writeFile(filePath, finalContent);
-      console.log(`✅ Created: ${filename}`);
+      spinner.text = `Created ${filename} (${i + 1}/${fileNames.length})`;
+
+      // Small delay for visual effect
+      await new Promise(resolve => setTimeout(resolve, 100));
     }
 
-    console.log(`\n🎉 Successfully created problem "${problemName}" in ${type.toUpperCase()} folder!`);
-    console.log(`📍 Location: ${problemPath}`);
+    spinner.succeed('All files created successfully! 🎉');
+
+    // Display beautiful success message
+    const successMessage = `✨ Problem "${problemName}" created successfully!\n\n` +
+      `📂 Type: ${type.toUpperCase()}\n` +
+      `📁 Location: ${problemPath}\n` +
+      `📄 Files: ${fileNames.join(', ')}`;
+
+    console.log('\n' + boxen(successMessage, {
+      padding: 1,
+      margin: 1,
+      borderStyle: 'round',
+      borderColor: 'green',
+      title: '🎯 Success',
+      titleAlignment: 'center'
+    }));
+
+    console.log('\n🚀 Happy coding! Run your development server to get started.\n');
 
   } catch (error) {
-    console.error('❌ Error creating problem:', error.message);
-  } finally {
-    rl.close();
+    // Handle errors with spinner
+    if (typeof spinner !== 'undefined') {
+      spinner.fail('Failed to create problem');
+    }
+
+    console.log('\n' + boxen(`❌ Error: ${error.message}`, {
+      padding: 1,
+      margin: 1,
+      borderStyle: 'round',
+      borderColor: 'red',
+      title: '💥 Error',
+      titleAlignment: 'center'
+    }));
   }
 }
 
