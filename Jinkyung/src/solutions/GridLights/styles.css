@@ -1,0 +1,26 @@
+body {
+    font-family: sans-serif;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+}
+
+.cell-wrapper {
+    gap: 10px;
+    display: flex;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cell.active {
+    background-color: green;
+}
