@@ -1,0 +1,22 @@
+{
+  "color-1": { "id": "color-1", "colorValue": "#BEE3DB" },
+  "color-2": { "id": "color-2", "colorValue": "#89B0AE" },
+  "color-3": { "id": "color-3", "colorValue": "#555B6E" },
+  "color-4": { "id": "color-4", "colorValue": "#FFD6BA" },
+  "color-5": { "id": "color-5", "colorValue": "#F94144" },
+  "color-6": { "id": "color-6", "colorValue": "#F3722C" },
+  "color-7": { "id": "color-7", "colorValue": "#F9C74F" },
+  "color-8": { "id": "color-8", "colorValue": "#2d6a4f" },
+  "color-9": { "id": "color-9", "colorValue": "#40916c" },
+  "color-10": { "id": "color-10", "colorValue": "#52b788" },
+  "color-11": { "id": "color-11", "colorValue": "#d8e2dc" },
+  "color-12": { "id": "color-12", "colorValue": "#ffe5d9" },
+  "color-13": { "id": "color-13", "colorValue": "#ffcad4" },
+  "color-14": { "id": "color-14", "colorValue": "#f4acb7" },
+  "color-15": { "id": "color-15", "colorValue": "#9d8189" },
+  "color-16": { "id": "color-16", "colorValue": "#00a6fb" },
+  "color-17": { "id": "color-17", "colorValue": "#0582ca" },
+  "color-18": { "id": "color-18", "colorValue": "#006494" },
+  "color-19": { "id": "color-19", "colorValue": "#003554" },
+  "color-20": { "id": "color-20", "colorValue": "#051923" }
+}
