@@ -1,0 +1,16 @@
+body {
+    font-family: sans-serif;
+}
+
+.progress {
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.progress-bar {
+    background: aquamarine;
+}

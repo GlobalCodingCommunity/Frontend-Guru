@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <form class="form-wrapper">
+      <div>
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          pattern="^[a-zA-Z0-9]*$"
+          minlength="4"
+          id="username"
+        />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" min="6" id="email" />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" minlength="6" id="password" />
+      </div>
+      <div>
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          minlength="6"
+          id="confirmPassword"
+        />
+      </div>
+      <div class="hidden error-message" id="error-message">
+        The passwords don't match
+      </div>
+      <button type="submit" id="submitButton">Sign Up</button>
+    </form>
+    <script src="src/index.js"></script>
+  </body>
+</html>
