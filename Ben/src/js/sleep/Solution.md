@@ -1,0 +1,79 @@
+Solution
+Approach 1: Non-blocking using setTimeout
+The sleep function takes a duration parameter representing the time in milliseconds for which the execution should be paused.
+It returns a Promise that will resolve after the specified duration.
+Inside the Promise constructor, use setTimeout to delay the execution of the resolve function, effectively pausing the execution for the specified time.
+
+```js
+/**
+ * @param {number} duration
+ * @return {Promise<void>}
+ */
+export default async function sleep(duration) {
+  return new Promise((resolve) => setTimeout(resolve, duration));
+}
+```
+
+Approach 2: Blocking version of sleep()
+A synchronous, blocking function of sleep can be implemented as such, where the CPU does nothing except repeatedly check if duration has passed since the function started running. Hence, it will pause all execution on the main thread and is usually not desired.
+
+```js
+function sleep(duration) {
+  let now = new Date().getTime();
+  while (new Date().getTime() < now + duration) {
+    // Do nothing.
+  }
+  // Proceed when `duration` has passed since `now`.
+}
+```
+
+Here's an example to illustrate the difference between the two versions of sleep:
+
+Asynchronous sleep:
+
+```js
+async function greeting() {
+  console.log("Hello!");
+  await sleep(2000);
+  console.log("Bye.");
+}
+
+setInterval(() => {
+  console.log("Tick");
+}, 500);
+
+greeting();
+// t = 0: Hello!
+// t = 500: Tick
+// t = 1000: Tick
+// t = 1500: Tick
+// t = 2000: Tick
+// t = 2000: Bye.
+// t = 2500: Tick
+// t = 3000: Tick
+// ...
+```
+
+Synchronous/blocking sleep:
+
+```js
+async function greeting() {
+  console.log("Hello!");
+  sleep(2000);
+  console.log("Bye.");
+}
+
+setInterval(() => {
+  console.log("Tick");
+}, 500);
+
+greeting();
+// t = 0: Hello!
+// t = 2000: Bye.
+// t = 2000: Tick
+// t = 2500: Tick
+// t = 3000: Tick
+// ...
+```
+
+Note that in this example, the first "Tick" is only printed because the sleep() function was executing the entire time (checking the while condition for the full duration).
