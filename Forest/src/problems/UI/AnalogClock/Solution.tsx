@@ -4,9 +4,10 @@ export default function Clock() {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    setInterval(() => {
+    const id = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
+    return () => clearInterval(id);
   }, []);
 
   return (
@@ -25,7 +26,10 @@ export default function Clock() {
             position: "relative",
           }}
         >
-          <HourHand hours={currentTime.getHours()} />
+          <HourHand
+            hours={currentTime.getHours()}
+            minutes={currentTime.getMinutes()}
+          />
           <br />
           <MinuteHand minutes={currentTime.getMinutes()} />
           <br />
