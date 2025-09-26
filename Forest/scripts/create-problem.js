@@ -49,7 +49,7 @@ export default function Original() {
 
 ## Description
 
-[Add problem description here]
+PROBLEM_DESCRIPTION_PLACEHOLDER
 
 ## Requirements
 
@@ -63,7 +63,7 @@ export default function Original() {
 
 ## Source
 
-[Add source link if applicable]`
+PROBLEM_URL_PLACEHOLDER`
   },
   js: {
     'Solution.ts': `// Problem: Problem Name
@@ -84,7 +84,7 @@ export default original;`,
 
 ## Description
 
-[Add problem description here]
+PROBLEM_DESCRIPTION_PLACEHOLDER
 
 ## Requirements
 
@@ -101,7 +101,7 @@ solution();
 
 ## Source
 
-[Add source link if applicable]`
+PROBLEM_URL_PLACEHOLDER`
   },
   htmljs: {
     'index.html': `<!DOCTYPE html>
@@ -192,6 +192,12 @@ async function createProblem() {
         filter: (input) => input.trim()
       },
       {
+        type: 'input',
+        name: 'problemUrl',
+        message: '🔗 Enter the URL of the original problem (optional):',
+        filter: (input) => input.trim()
+      },
+      {
         type: 'confirm',
         name: 'confirm',
         message: (answers) => `📁 Create "${answers.problemName}" in ${answers.type.toUpperCase()} folder?`,
@@ -204,7 +210,7 @@ async function createProblem() {
       return;
     }
 
-    const { type, problemName } = answers;
+    const { type, problemName, problemUrl } = answers;
 
     // Clean problem name for folder
     const folderName = problemName.replace(/[^a-zA-Z0-9\\s]/g, '').replace(/\\s+/g, ' ');
@@ -248,8 +254,19 @@ async function createProblem() {
         await mkdir(dir, { recursive: true });
       }
 
-      // Replace placeholder with actual problem name
-      const finalContent = content.replace(/Problem Name/g, problemName);
+      // Replace placeholders with actual values
+      let finalContent = content.replace(/Problem Name/g, problemName);
+
+      // Replace URL placeholder
+      if (finalContent.includes('PROBLEM_URL_PLACEHOLDER')) {
+        const sourceText = problemUrl ? problemUrl : '[Add source link if applicable]';
+        finalContent = finalContent.replace('PROBLEM_URL_PLACEHOLDER', sourceText);
+      }
+
+      // Replace description placeholder with default text
+      if (finalContent.includes('PROBLEM_DESCRIPTION_PLACEHOLDER')) {
+        finalContent = finalContent.replace('PROBLEM_DESCRIPTION_PLACEHOLDER', '[Add problem description here]');
+      }
 
       await writeFile(filePath, finalContent);
       spinner.text = `Created ${filename} (${i + 1}/${fileNames.length})`;
