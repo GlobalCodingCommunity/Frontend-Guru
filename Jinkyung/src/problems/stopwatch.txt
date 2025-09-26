@@ -1,0 +1,8 @@
+Create a React stopwatch component with two input fields: one for minutes and one for seconds. Do not use any min or max attributes on the inputs — just plain number inputs. 
+The stopwatch should display the time in the format MM:SS and include Start, Pause, and Reset buttons.
+
+Start begins counting down from the entered time.
+
+Pause stops the countdown while keeping the current time.
+
+Reset stops the countdown and returns the stopwatch to the originally entered minutes and seconds.
