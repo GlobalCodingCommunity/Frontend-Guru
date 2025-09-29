@@ -8,6 +8,9 @@ import { inRange } from "../utils/validators";
 
 // TODO Q4
 const TwoFactorAuthScreen = () => {
+  const [code,setCode]=useState('')
+
+  const isValid=inRange(code,7,7)
   return (
     <Screen>
       <form>
@@ -20,12 +23,17 @@ const TwoFactorAuthScreen = () => {
           label="Code"
           role="textbox"
           name="textbox"
+          value={code}
+          onChange={(e)=>setCode(e.target.value)}
           placeholder="Enter the 7-digit code"
+         maxLength={7}
+
         />
         <Button
           type="primary"
           name="Submit"
           value="Submit"
+          disabled={!isValid}
         />
       </form>
     </Screen>
