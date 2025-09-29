@@ -15,13 +15,14 @@ export default function ProblemPage() {
 
     useEffect(() => {
       if (!name) return;
+      console.log(name)
 
       // name에 맞는 solution CSS import
       import(`/src/solutions/${name}/styles.css`).catch(() => {
         console.warn(`No styles.css for ${name}`);
       });
     }, [name]);
-    
+
   useEffect(() => {
     const loadProblem = async () => {
       if (!name) return;
