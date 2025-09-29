@@ -1,0 +1,40 @@
+body {
+    font-family: sans-serif;
+}
+
+.wrapper {
+    width: 100px;
+    height: 250px;
+    color: #555555;
+    background-color: #555555;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.light {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    position: absolute;
+    left: 25px;
+}
+
+.red {
+    top: 20px;
+    background-color: #f00;
+}
+
+.yellow {
+    top: 100px;
+    background-color: rgb(255, 238, 0);
+}
+
+.green {
+    top: 180px;
+    background-color: rgb(21, 117, 46);
+}
+
+.off {
+    background-color: rgb(164, 164, 164);
+}

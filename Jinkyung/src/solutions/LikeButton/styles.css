@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+}
+
+
+.like-button,
+.default-button {
+    width: 80px;
+    padding: 5px 10px;
+    /* 퍼센트 대신 px로 주는 게 더 예쁘게 맞음 */
+}
+
+.like-button {
+    color: #fff;
+    border: 2px solid #f00;
+    border-radius: 15px;
+    background-color: #f00;
+}
+
+.default-button {
+    color: #888;
+    border: 2px solid #888;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.default-button:hover {
+    border: 2px solid #f00;
+    color: #f00;
+    border-radius: 15px;
+    background-color: #fff;
+}

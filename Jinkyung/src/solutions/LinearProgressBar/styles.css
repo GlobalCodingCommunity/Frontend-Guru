@@ -8,9 +8,9 @@ body {
     overflow: hidden;
     height: 15px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 80%;
 }
 
 .progress-bar {
-    background: aquamarine;
+    background: #f00;
 }

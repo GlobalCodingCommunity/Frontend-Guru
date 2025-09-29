@@ -14,7 +14,7 @@ function FileNode({ node ,level,posInSet,setSize }) {
   const isFolder = node.children;
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <li style={{ marginLeft: "10px" }} role="treeitem" aria-level={level} aria-posInSet={posInSet} aria-setSize={setSize} aria-expanded={isFolder?isOpen:undefined}>
+    <li style={{ marginLeft: "10px" }} role="treeitem" aria-level={level} aria-posInSet={posInSet} aria-setsize={setSize} aria-expanded={isFolder?isOpen:undefined}>
       <div
         style={{ fontWeight: isFolder ? "bold" : "" }}
         onClick={() => isFolder && setIsOpen(!isOpen)}

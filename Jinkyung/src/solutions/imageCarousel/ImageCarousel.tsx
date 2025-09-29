@@ -37,7 +37,7 @@ export default function ImageCarousel({
           </button>
           <div className="pagination">
             {images.map((_, i) => (
-              <button
+              <button key={i}
                 className="pagination__button"
                 style={{ backgroundColor: showIndex == i ? "#e6e6e6" : "" }}
                 onClick={(e) => {
