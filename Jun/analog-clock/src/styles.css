@@ -1,0 +1,38 @@
+.frame {
+  width: 400px;
+  height: 400px;
+  border-radius: 100%;
+  border: 2px solid;
+  position: relative;
+}
+
+.time {
+  width: 5px;
+  height: 100px;
+  background-color: #000;
+  
+  transform-origin: 100% 100%;
+  position: absolute;
+  left: 200px;
+  bottom: 200px;
+}
+
+.min {
+  width: 3px;
+  height: 130px;
+  background-color: #000;
+  transform-origin: 100% 100%;
+  position: absolute;
+  left: 200px;
+  bottom: 200px;
+}
+
+.sec {
+  width: 2px;
+  height: 180px;
+  background-color: #000;
+  transform-origin: 100% 100%;
+  position: absolute;
+  left: 200px;
+  bottom: 200px;
+}
