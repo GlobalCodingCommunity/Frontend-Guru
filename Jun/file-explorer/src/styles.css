@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  border: 1px solid #666;
+}
+
+.collapsed {
+  display: none;
+}
+.expended {
+  display: block;
+}
+li {
+  list-style: none;
+}
