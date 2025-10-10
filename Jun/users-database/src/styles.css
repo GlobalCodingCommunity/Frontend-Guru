@@ -1,0 +1,12 @@
+body {
+  font-family: sans-serif;
+}
+li {
+  list-style: none;
+}
+li button {
+  all: unset;
+}
+.selected {
+  background-color: #9a9a9a;
+}
