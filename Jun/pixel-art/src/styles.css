@@ -1,0 +1,41 @@
+body {
+  font-family: sans-serif;
+}
+
+.canvas {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+}
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style: none;
+}
+
+.color {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.selected {
+  border: 1px solid #000;
+}
+
+.mode button {
+  border: 1px solid #000;
+  padding: 2px 4px;
+}
+
+.mode button:disabled {
+  background-color: #000;
+  color: #fff;
+}
