@@ -1,0 +1,16 @@
+import ProgressBar from "./ProgressBar";
+
+export default function App() {
+  return (
+    <div>
+      <ProgressBar value={0} />
+      <ProgressBar value={25} />
+      <ProgressBar value={50} />
+      <ProgressBar value={75} />
+      <ProgressBar value={100} />
+      <ProgressBar value={2} />
+      <ProgressBar value={-10} />
+      <ProgressBar value={120} />
+    </div>
+  );
+}
