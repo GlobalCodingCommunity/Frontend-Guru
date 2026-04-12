@@ -31,3 +31,26 @@ I really want to stick to these three habits.
 
 **Pair sum**
 - It was helpful that the person explained their thought process step-by-step while solving the problem.
+
+## WEEK 2 (25-11-17 ~ 25-11-23)
+
+- [x] Solve at least one problem per week
+  - [debounce](https://www.greatfrontend.com/interviews/study/three-months/questions/javascript/debounce)
+  - [classnames](https://www.greatfrontend.com/interviews/study/three-months/questions/javascript/classnames)
+  - [throttle](https://www.greatfrontend.com/questions/javascript/throttle)
+  - [Array.prototype.bind](https://www.greatfrontend.com/interviews/study/three-months/questions/javascript/array-filter)
+- [x] Re-solve problems covered in the study group
+  - [Smallest element in rotated sorted array](https://www.greatfrontend.com/questions/algo/array-smallest-in-rotated?practice=practice&tab=coding)
+  - [Binary Tree Subtree](https://www.greatfrontend.com/interviews/study/blind75/questions/algo/binary-tree-subtree)
+- [x] Study review
+
+### Study Review – Saturday, 25-11-22
+
+**Smallest Element in Rotated Sorted Array**
+
+- Take enough time to analyze the problem thoroughly before starting.
+
+**Binary Tree Subtree**
+
+- Be able to explain why DFS was chosen.
+- If stuck while solving, ask questions in a concrete and specific form.
