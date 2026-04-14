@@ -1,120 +1,140 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
+import {
+  defaultPath,
+  findMenuByPath,
+  topMenuItems,
+  type SideMenuItem,
+} from './constants/common'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pathname, setPathname] = useState(() => window.location.pathname)
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setPathname(window.location.pathname)
+    }
+
+    window.addEventListener('popstate', handlePopState)
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!findMenuByPath(pathname)) {
+      window.history.replaceState({}, '', defaultPath)
+      setPathname(defaultPath)
+    }
+  }, [pathname])
+
+  useEffect(() => {
+    setIsMobileNavOpen(false)
+  }, [pathname])
+
+  const activeMenu = useMemo(() => findMenuByPath(pathname), [pathname])
+
+  const handleNavigate = (nextPath: string) => {
+    if (nextPath === pathname) return
+
+    window.history.pushState({}, '', nextPath)
+    setPathname(nextPath)
+  }
+
+  if (!activeMenu) {
+    return null
+  }
+
+  const ActivePage = activeMenu.activeItem.component
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app-shell">
+      <header className="gnb">
+        <div className="gnb__brand">
+          <button
+            type="button"
+            className="gnb__menu-button"
+            onClick={() => setIsMobileNavOpen((current) => !current)}
+            aria-label="Toggle side navigation"
+            aria-expanded={isMobileNavOpen}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          <div>
+            <p className="gnb__eyebrow">great-frontend</p>
+            <strong className="gnb__title">Problem Workspace</strong>
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
+
+        <nav className="gnb__nav" aria-label="Global navigation">
+          {topMenuItems.map((menu) => {
+            const isActive = activeMenu.topMenu.label === menu.label
+
+            return (
+              <a
+                key={menu.label}
+                href={menu.defaultPath}
+                className={`gnb__link${isActive ? ' is-active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
+                onClick={(event) => {
+                  event.preventDefault()
+                  handleNavigate(menu.defaultPath)
+                }}
+              >
+                {menu.label}
+              </a>
+            )
+          })}
+        </nav>
+      </header>
+
+      <div className="layout">
+        <aside className={`snb${isMobileNavOpen ? ' is-open' : ''}`}>
+          <div className="snb__section">
+            <p className="snb__label">{activeMenu.topMenu.label}</p>
+
+            <div className="snb__menu">
+              {activeMenu.topMenu.children.map((item: SideMenuItem) => {
+                const isActive = pathname === item.path
+
+                return (
+                  <a
+                    key={item.path}
+                    href={item.path}
+                    className={`snb__item${isActive ? ' is-active' : ''}`}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={(event) => {
+                      event.preventDefault()
+                      handleNavigate(item.path)
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+        </aside>
+
+        <main className="content">
+          <ActivePage />
+        </main>
+      </div>
+
+      {isMobileNavOpen ? (
         <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+          type="button"
+          className="mobile-backdrop"
+          aria-label="Close side navigation"
+          onClick={() => setIsMobileNavOpen(false)}
+        />
+      ) : null}
+    </div>
   )
 }
 
