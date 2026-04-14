@@ -17,27 +17,3 @@ export default function flatten(value: Array<any>) {
 
   return result
 }
-
-/**
- * iterative solution
- * 
- function flatten(arr) {
-  const stack = [...arr];
-  const result = [];
-
-  while (stack.length > 0) {
-    const value = stack.pop();
-
-    if (Array.isArray(value)) {
-      // push children back onto the stack
-      // reversed so order is preserved
-      stack.push(...value);
-    } else {
-      result.push(value);
-    }
-  }
-
-  return result.reverse(); // because we used pop()
-}
-
- */

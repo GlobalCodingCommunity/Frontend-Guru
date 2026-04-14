@@ -14,3 +14,24 @@ time: o(n), visit every element once
 space: o(n), create a new flattened array containing n elements
 
 ## can you implement this iteratively?
+
+iterative solution
+
+function flatten(arr) {
+  const stack = [...arr];
+  const result = [];
+
+  while (stack.length > 0) {
+    const value = stack.pop();
+
+    if (Array.isArray(value)) {
+      // push children back onto the stack
+      // reversed so order is preserved
+      stack.push(...value);
+    } else {
+      result.push(value);
+    }
+  }
+
+  return result.reverse(); // because we used pop()
+}
