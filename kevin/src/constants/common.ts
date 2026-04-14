@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 
 import UITodoListPage from '../pages/UI/TodoList'
+import UIJobBoardPage from '../pages/UI/JobBoard'
 
 export type SideMenuItem = {
   label: string
@@ -24,6 +25,11 @@ export const topMenuItems: TopMenuItem[] = [
         path: '/UI/TodoList',
         component: UITodoListPage,
       },
+      {
+        label: 'Job Board',
+        path: '/UI/JobBoard',
+        component: UIJobBoardPage,
+      }
     ],
   },
   {

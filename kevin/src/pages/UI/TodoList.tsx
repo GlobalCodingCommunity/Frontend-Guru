@@ -44,7 +44,7 @@ function UITodoListPage() {
         </ProblemDescription>
       </ProblemHeader>
 
-      <ProblemResult category="UI" page="Todo List">
+      <ProblemResult>
         <div>
           <form onSubmit={handleSubmit}>
             <input
