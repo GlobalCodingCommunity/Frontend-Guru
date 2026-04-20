@@ -3,6 +3,7 @@ import type { ComponentType } from 'react'
 import UITodoListPage from '../pages/UI/TodoList'
 import UIJobBoardPage from '../pages/UI/JobBoard'
 import UIContactFormPage from '../pages/UI/ContactForm'
+import UITemperatureConverterPage from '../pages/UI/TemperatureConverter'
 
 export type SideMenuItem = {
   label: string
@@ -35,6 +36,11 @@ export const topMenuItems: TopMenuItem[] = [
         label: 'Contact Form',
         path: '/UI/ContactForm',
         component: UIContactFormPage,
+      },
+      {
+        label: 'Temperature Converter',
+        path: '/UI/TemperatureConverter',
+        component: UITemperatureConverterPage,
       }
     ],
   },
