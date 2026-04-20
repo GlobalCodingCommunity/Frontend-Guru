@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 
 import UITodoListPage from '../pages/UI/TodoList'
 import UIJobBoardPage from '../pages/UI/JobBoard'
+import UIContactFormPage from '../pages/UI/ContactForm'
 
 export type SideMenuItem = {
   label: string
@@ -29,6 +30,11 @@ export const topMenuItems: TopMenuItem[] = [
         label: 'Job Board',
         path: '/UI/JobBoard',
         component: UIJobBoardPage,
+      },
+      {
+        label: 'Contact Form',
+        path: '/UI/ContactForm',
+        component: UIContactFormPage,
       }
     ],
   },
