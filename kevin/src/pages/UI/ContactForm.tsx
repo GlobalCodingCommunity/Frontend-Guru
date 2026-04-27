@@ -3,7 +3,7 @@ import ProblemHeader from '../../components/ProblemHeader';
 import ProblemDescription from '../../components/ProblemDescription';
 import ProblemResult from '../../components/ProblemResult';
 
-function UITodoListPage() {
+function UIContactFormPage() {
   return (
     <ProblemLayout>
       <ProblemHeader category="UI" page="ContactForm">
@@ -49,4 +49,4 @@ function UITodoListPage() {
   );
 }
 
-export default UITodoListPage;
+export default UIContactFormPage;
