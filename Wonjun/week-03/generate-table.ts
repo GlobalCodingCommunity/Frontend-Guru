@@ -5,18 +5,21 @@ export default function App() {
   const [cols, setCols] = useState(5);
   const [table, setTable] = useState([]);
 
-  function generateDiagonalTable(r, c) {
+  function generateZigZagPattern(r, c) {
     const result = Array.from({ length: r }, () => Array(c).fill(null));
     let num = 1;
 
-    for (let d = 0; d < r + c - 1; d++) {
-      let row = d < c ? 0 : d - (c - 1);
-      let col = d < c ? d : c - 1;
-
-      while (row < r && col >= 0) {
-        result[row][col] = num++;
-        row++;
-        col--;
+    for (let col = 0; col < c; col++) {
+      if (col % 2 === 0) {
+        // top → bottom
+        for (let row = 0; row < r; row++) {
+          result[row][col] = num++;
+        }
+      } else {
+        // bottom → top
+        for (let row = r - 1; row >= 0; row--) {
+          result[row][col] = num++;
+        }
       }
     }
 
@@ -25,7 +28,12 @@ export default function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setTable(generateDiagonalTable(Number(rows), Number(cols)));
+    const r = Number(rows);
+    const c = Number(cols);
+
+    if (r > 0 && c > 0) {
+      setTable(generateZigZagPattern(r, c));
+    }
   }
 
   return (
@@ -61,14 +69,10 @@ export default function App() {
 
         <button type="submit">Submit</button>
       </form>
+
       <div style={{ marginTop: 20 }}>
         {table.map((row, i) => (
-          <div
-            key={i}
-            style={{
-              display: "flex",
-            }}
-          >
+          <div key={i} style={{ display: "flex" }}>
             {row.map((cell, j) => (
               <div
                 key={j}
@@ -79,7 +83,6 @@ export default function App() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "16px",
                   background: "#fafafa",
                 }}
               >
